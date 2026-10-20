@@ -27,9 +27,15 @@ MAN={
    dict(plan='計劃3',room=3000,misc=300000,surg_max=None,opd=40000,annual=7500000)],
    note='實支自「啟動日」(75或80歲)起適用；雜費與住院手術合併限額'),
 }
+import unicodedata
+sys.path.insert(0,os.path.dirname(__file__));from regular_plans import T,HYBRID_ONLY,COPAY,RECLASS
+N=lambda x:unicodedata.normalize('NFKC',x)
+def look(D,name):
+    for k,v in D.items():
+        if N(k) in N(name): return v
 out=[]
 for i,p in enumerate(P):
-    code=p.get('code',U); m=MAN.get(code)
+    code=p.get('code',U); m=MAN.get(code) or look(T,p['name'])
     sp=p.get('sample_premiums')
     prem={}
     if isinstance(sp,dict):
@@ -48,7 +54,8 @@ for i,p in enumerate(P):
       prepost=short(p.get('pre_post_opd_er'),100),annual=short(p.get('annual_cap'),100),daily=short(p.get('daily_option'),120),
       cancer=short(p.get('cancer_major_double'),120),copy=short(p.get('copy_receipt'),60),
       prem=prem,prem_note=prem_note,manual=manual,method=short(p.get('extraction_method'),60),
-      plans=m['plans'] if m else [],combined=m['combined'] if m else None,plan_note=m['note'] if m else '',
+      plans=m['plans'] if m else [],combined=m['combined'] if m else None,plan_note=(m or {}).get('note',''),room_txt=(m or {}).get('room_txt',''),prepost_txt=(m or {}).get('prepost',''),
+      hybrid=(m or {}).get('hybrid') or look(HYBRID_ONLY,p['name']) or ('75/80歲啟動日起轉實支' if code.startswith('HAC') else ''),copay=look(COPAY,p['name']) or '',reclass=look(RECLASS,p['name']) or '',
       tii=p.get('tii_product_id',U),url=p.get('source_url',U) if isinstance(p.get('source_url'),str) else json.dumps(p.get('source_url'),ensure_ascii=False)[:200],
       src=(p.get('source_files') or [U])[0] if isinstance(p.get('source_files'),list) else str(p.get('source_files'))))
 json.dump(dict(updated=datetime.datetime.fromtimestamp(os.path.getmtime(SRC)).strftime('%Y-%m-%d %H:%M')+'（台北時間）',products=out),open(OUT,'w'),ensure_ascii=False,separators=(',',':'))

@@ -48,3 +48,4 @@ th:first-child,td:first-child{position:sticky;left:0;background:#fff;min-width:8
 .adv li{margin-bottom:8px;line-height:1.5}
 footer{font-size:12px;color:#66707d;text-align:center;padding:16px;line-height:1.6}
 .big{font-size:28px;font-weight:800;color:var(--blue)}
+.pt{border-collapse:collapse;font-size:13px;width:100%}.pt td,.pt th{border:1px solid #dde3ea;padding:5px 6px;text-align:right}.pt td:first-child,.pt th:first-child{text-align:left}
