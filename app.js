@@ -80,7 +80,10 @@ const items=(list,kind)=>list.map(p=>({kind,p,id:(kind==='ded'?'D':'')+p.id,co:p
 function coChips(its,sel,cb,id){const cos=[...new Set(its.map(i=>i.co))];return `<div class="chips" id="${id}">${cos.map(c=>`<button class="chip ${sel===c?'on':''}" data-c="${c}">${c}</button>`).join('')}</div>`}
 function bindChips(id,cb){document.querySelectorAll(`#${id} .chip`).forEach(b=>b.onclick=()=>cb(b.dataset.c))}
 function prodList(its,sel,id){const grp=i=>i.kind!=='reg'?0:i.p.copay?2:i.p.reclass?3:i.p.hybrid?1:0;const H=['','日額轉實支（混合型）','部分負擔型','分類待確認'];let last=0;
- return `<div class="list" id="${id}">${its.slice().sort((a,b)=>grp(a)-grp(b)).map(i=>{const g=grp(i);const hd=g!==last?(last=g,`<div class="sub" style="margin:10px 0 4px;font-weight:600">${H[g]}</div>`):'';return hd+(i=>`<button class="item ${sel===i.id?'on':''}" data-i="${i.id}">${esc(i.name)}<div class="c">${esc(i.code!==U?i.code.replace(/[【].*$/,''):'')} ${i.kind==='reg'?esc(i.p.type):''}${i.kind==='reg'&&i.p.hybrid?' ・'+esc(i.p.hybrid):''}${i.kind==='reg'&&i.p.copay?' ・<b>部分負擔</b>':''}</div></button>`)}).join('')}</div>`}
+ const cd=i=>i.code&&i.code!==U&&!/^未確認/.test(i.code)?esc(i.code.replace(/[(（【].*$/,'')):'';
+ return `<div class="list" id="${id}">${its.slice().sort((a,b)=>grp(a)-grp(b)).map(i=>{const g=grp(i);const hd=g!==last?(last=g,`<div class="sub" style="margin:10px 0 4px;font-weight:600">${H[g]}</div>`):'';
+  const tag=i.kind==='reg'?(esc(i.p.type)+(i.p.hybrid?' ・'+esc(i.p.hybrid):'')+(i.p.copay?' ・<b style="color:#b44">部分負擔</b>':'')):'';
+  return hd+`<button class="item ${sel===i.id?'on':''}" data-i="${i.id}">${esc(i.name)}<div class="c">${cd(i)} ${tag}</div></button>`}).join('')}</div>`}
 function bindList(id,cb){document.querySelectorAll(`#${id} .item`).forEach(b=>b.onclick=()=>cb(b.dataset.i))}
 function planChips(it,sel,id){if(!it.plans.length)return (id==='rp'?'<div class="sub">此商品限額核對中，請改用下方輸入上限。</div>':`<div class="sub">此商品方案限額仍在核對中，可直接看條款摘錄。</div><div class="chips" id="${id}"><button class="chip" data-p="">看條款重點</button></div>`);
  return `<div class="chips" id="${id}">${it.plans.map(p=>`<button class="chip ${sel===p?'on':''}" data-p="${p}">${p}</button>`).join('')}</div>`}
@@ -152,5 +155,5 @@ function fubon(){const hsy=S.ded.find(p=>p.id==='HSY');const hsv=S.reg.find(r=>r
  const m=location.hash.slice(1);if(m){const [t,...rest]=m.split('/');if(TYPES.some(x=>x[0]===t)){S.type=t;render1();await go();if(rest.length)await deep(rest)}}})();
 async function deep(r){ // #ded/HSY/計劃1  #combo/HSV:計劃1/HSY:計劃1
  if(S.type==='ded'||S.type==='reg'){const list=S.type==='ded'?S.ded:S.reg;const p=list.find(x=>x.id===r[0]||x.code===r[0]||x.code.startsWith(r[0]));if(!p)return;S.co=p.company;S.pick=(S.type==='ded'?'D':'')+p.id;S.plan=decodeURIComponent(r[1]||'');pickFlow(list,S.type)}
- if(S.type==='combo'){const [a,ap]=decodeURIComponent(r[0]).split(':'),[b,bp]=decodeURIComponent(r[1]).split(':');const R=S.reg.find(x=>x.code.startsWith(a)),D=S.ded.find(x=>x.id===b);S.co=R.company;S.pick=R.id;S.plan=ap;S.co2=D.company;S.pick2='D'+D.id;S.plan2=bp;comboFlow()}
+ if(S.type==='combo'){const [a,ap]=decodeURIComponent(r[0]).split(':'),[b,bp]=decodeURIComponent(r[1]).split(':');const R=S.reg.find(x=>x.code===a)||S.reg.find(x=>x.code.startsWith(a+'(')||x.code.startsWith(a+'/'))||S.reg.find(x=>x.code.startsWith(a)),D=S.ded.find(x=>x.id===b);S.co=R.company;S.pick=R.id;S.plan=ap;S.co2=D.company;S.pick2='D'+D.id;S.plan2=bp;comboFlow()}
  if(S.type==='cmp'){S.cmp=r.map(x=>{const d=S.ded.find(p=>p.id===x);if(d)return 'D'+d.id;const g=S.reg.find(p=>p.code.startsWith(x));return g&&g.id}).filter(Boolean);S.co=S.ded.find(p=>'D'+p.id===S.cmp[0])?.company||'富邦';cmpFlow()}}
