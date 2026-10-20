@@ -1,0 +1,1751 @@
+{
+ "products": [
+  {
+   "id": "HSY",
+   "company": "富邦人壽",
+   "code": "HSY1/HSY2",
+   "name": "富邦人壽全鑫醫療費用健康保險附約",
+   "kind": "附約",
+   "status": "現售",
+   "approval": "114.01.13 富壽商精字第1130005872號",
+   "ages": "本人/配偶 0–70歲；子女 0–23歲（四季春 catalog.js；DM）",
+   "renew": "一年期保證續保，最高續保至80歲",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 75% 計",
+   "op_rule": "門診手術限健保 2-2-7／3-3-4-3，每年最多6次；特定處置每年6次",
+   "hosp_scope": "住院醫療暨手術費用（手術與雜費合併計算、不受手術比例限制）；含住院前1週、出院後1週（有手術者2週）門急診",
+   "annual_cap": "計劃1 每年總限額 75萬；計劃2 50萬",
+   "daily": "無日額",
+   "offset": "有：扣除「自負額」與「已獲他保依正本實支給付金額」兩者之最大值",
+   "offset_level": "明文",
+   "claim": "正本理賠（他保先以正本理賠者，本附約可憑他保證明抵自負額）",
+   "plans": [
+    {
+     "plan": "計劃1",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 100000,
+     "hosp_lim": 300000,
+     "op_ded": 15000,
+     "op_lim": 25000,
+     "limit_mode": "gross",
+     "extra": "特定處置 自7,500/限12,500",
+     "net_hosp": 200000,
+     "bridge": 300000
+    },
+    {
+     "plan": "計劃2",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 200000,
+     "hosp_lim": 300000,
+     "op_ded": 20000,
+     "op_lim": 25000,
+     "limit_mode": "gross",
+     "extra": "特定處置 自10,000/限12,500",
+     "net_hosp": 100000,
+     "bridge": 300000
+    }
+   ],
+   "rep": "計劃1",
+   "prem": {
+    "30M": 3694,
+    "40M": 7653,
+    "30F": 5645,
+    "40F": 6626
+   },
+   "prem_src": "富邦四季春快速報價 費率資料（費率來源 HSY1-Y2費率表 1140113）；30=30–34歲、40=40–44歲",
+   "all_prem": {
+    "計劃1": {
+     "30M": 3694,
+     "40M": 7653,
+     "30F": 5645,
+     "40F": 6626
+    },
+    "計劃2": {
+     "30M": 1740,
+     "40M": 3540,
+     "30F": 2540,
+     "40F": 3175
+    }
+   },
+   "main_rule": "附約，不可單獨投保；同一被保險人於富邦限投保一張具自負額實支實付（四季春 app.js 規則）；四季春未設特定主約限制；主約最低保額依主約規定（例：XWS5 最低10萬，搭HSV時5萬）。正式「HSY1-Y2投保規則(自1140113起適用)」全文未取得→細節未確認",
+   "excl": "標準除外：故意、犯罪、吸毒酗酒、美容整形、懷孕分娩（列舉例外）、健檢療養、牙科（意外除外）等",
+   "features": "含每日病房、特定處置；手術雜費合併不受比例限制；每年總限額75萬（計劃1）",
+   "src": [
+    [
+     "pdfs/富邦/HSY_條款.pdf",
+     "p.2–4 給付與最大值條文；p.4 除外；p.8 附表"
+    ],
+    [
+     "pdfs/富邦/HSY_DM.pdf",
+     "p.2–3 保障表/範例"
+    ],
+    [
+     "/workspace/personal-quote catalog.js / app.js / riders_rates.js",
+     "富邦四季春快速報價 費率資料"
+    ]
+   ],
+   "url": "https://www.fubon.com/life/product/personal/health/HSY1-HSY2",
+   "tii": "保發中心「自負額」關鍵字查無（商品名稱無「自負額」字樣）；現售依富邦官網商品頁"
+  },
+  {
+   "id": "WV4",
+   "company": "國泰人壽",
+   "code": "WV4",
+   "name": "國泰人壽超實在自負額醫療費用健康保險附約（外溢型）",
+   "kind": "附約",
+   "status": "現售",
+   "approval": "114.04.17 國壽字第1140040016號",
+   "ages": "0–70歲",
+   "renew": "保證續保至80歲（主契約有效期間內）",
+   "waiting": "第31日起（30日）",
+   "nonNHI": "非健保給付者按 65% 計",
+   "op_rule": "門診手術每年最多6次（手術定義：健保 2-2-7／3-3-4-3）",
+   "hosp_scope": "每次住院醫療費用（DM範例含手術費用；條款未單列手術→手術是否全額納入未確認，見 questions.md）",
+   "annual_cap": "未見年度總限額",
+   "daily": "無日額",
+   "offset": "有：扣除兩款之最大值（自負額／他保正本已給付）",
+   "offset_level": "明文",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "計劃1",
+     "room_ded": 1000,
+     "room_lim": 1000,
+     "hosp_ded": 100000,
+     "hosp_lim": 100000,
+     "op_ded": 10000,
+     "op_lim": 10000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 200000
+    },
+    {
+     "plan": "計劃2",
+     "room_ded": 1000,
+     "room_lim": 2000,
+     "hosp_ded": 100000,
+     "hosp_lim": 200000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 300000
+    },
+    {
+     "plan": "計劃3",
+     "room_ded": 2000,
+     "room_lim": 1000,
+     "hosp_ded": 200000,
+     "hosp_lim": 100000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 300000
+    }
+   ],
+   "rep": "計劃2",
+   "prem": {
+    "30M": 2602,
+    "40M": 5212,
+    "30F": 4943,
+    "40F": 5489
+   },
+   "prem_src": "WV4_DM.pdf p.3 費率表（2026年10月版，30=30–34、40=40–44）",
+   "all_prem": {
+    "計劃1": {
+     "30M": 1258,
+     "40M": 2542,
+     "30F": 2441,
+     "40F": 2937
+    },
+    "計劃2": {
+     "30M": 2602,
+     "40M": 5212,
+     "30F": 4943,
+     "40F": 5489
+    },
+    "計劃3": {
+     "30M": 897,
+     "40M": 1573,
+     "30F": 1862,
+     "40F": 2551
+    }
+   },
+   "main_rule": "附約，不可單獨投保；每人限購一張，且須符合國泰「自負額實支型投保規範」；於主契約有效期間內保證續保（DM 投保規定）；規範全文 未確認",
+   "excl": "標準除外項目（條款 p.5）",
+   "features": "限額為「最高給付」（非扣自負額前），外溢型 FitBack 最高3%保費回饋",
+   "src": [
+    [
+     "pdfs/國泰/WV4_條款.pdf",
+     "p.3–4 最大值條文；p.5 除外；p.8 附表"
+    ],
+    [
+     "pdfs/國泰/WV4_DM.pdf",
+     "p.2 範例；p.3 費率（以 img/wv4_rates.png 判讀）"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=204311RZ1AWV421A11E10000000"
+    ]
+   ],
+   "url": "https://www.cathaylife.com.tw",
+   "tii": "保發中心 未停售；銷售日 114/04/17；productId 204311RZ1AWV421A11E10000000"
+  },
+  {
+   "id": "XHO",
+   "company": "全球人壽",
+   "code": "XHO",
+   "name": "全球人壽全心全意自負額醫療費用健康保險附約（XHO）",
+   "kind": "附約",
+   "status": "現售",
+   "approval": "113.9.30 銷售",
+   "ages": "0–70歲",
+   "renew": "保證續保至81歲保單週年日",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 70% 計",
+   "op_rule": "門診手術或門診特定診療每年10次；2-2-7／3-3-4-3 及104項列表",
+   "hosp_scope": "住院醫療特定費用（含手術費；住院前7日、出院後15日門急診）；加護病房病房限額×2（15日）、住院醫療限額×2",
+   "annual_cap": "未見年度總限額",
+   "daily": "住院照護保險金 1,000/日（定額）",
+   "offset": "DM 載明扣除「自負額」與「他保正本給付」最大值；條款第十五條為「已獲他保正本實支給付者不給付」→ 文義差異見 questions.md",
+   "offset_level": "DM明文/條款推定",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "1A",
+     "room_ded": 1000,
+     "room_lim": 1000,
+     "hosp_ded": 100000,
+     "hosp_lim": 100000,
+     "op_ded": 15000,
+     "op_lim": 15000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 200000
+    },
+    {
+     "plan": "2A",
+     "room_ded": 1000,
+     "room_lim": 2000,
+     "hosp_ded": 100000,
+     "hosp_lim": 200000,
+     "op_ded": 15000,
+     "op_lim": 20000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 300000
+    },
+    {
+     "plan": "3A",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 100000,
+     "hosp_lim": 300000,
+     "op_ded": 15000,
+     "op_lim": 25000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 300000,
+     "bridge": 400000
+    },
+    {
+     "plan": "4A",
+     "room_ded": 1000,
+     "room_lim": 4000,
+     "hosp_ded": 100000,
+     "hosp_lim": 400000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 400000,
+     "bridge": 500000
+    },
+    {
+     "plan": "1B",
+     "room_ded": 2000,
+     "room_lim": 1000,
+     "hosp_ded": 200000,
+     "hosp_lim": 100000,
+     "op_ded": 20000,
+     "op_lim": 15000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 300000
+    },
+    {
+     "plan": "2B",
+     "room_ded": 2000,
+     "room_lim": 2000,
+     "hosp_ded": 200000,
+     "hosp_lim": 200000,
+     "op_ded": 20000,
+     "op_lim": 20000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 400000
+    },
+    {
+     "plan": "3B",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 200000,
+     "hosp_lim": 300000,
+     "op_ded": 20000,
+     "op_lim": 25000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 300000,
+     "bridge": 500000
+    },
+    {
+     "plan": "1C",
+     "room_ded": 3000,
+     "room_lim": 1000,
+     "hosp_ded": 300000,
+     "hosp_lim": 100000,
+     "op_ded": 25000,
+     "op_lim": 15000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 400000
+    },
+    {
+     "plan": "2C",
+     "room_ded": 3000,
+     "room_lim": 2000,
+     "hosp_ded": 300000,
+     "hosp_lim": 200000,
+     "op_ded": 25000,
+     "op_lim": 20000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 500000
+    }
+   ],
+   "rep": "2A",
+   "prem": {
+    "30M": 4520,
+    "40M": 7693,
+    "30F": 5169,
+    "40F": 5510
+   },
+   "prem_src": "XHO/XHP 友善DM p.5 費率表（30=30–34、40=40–44）",
+   "all_prem": {
+    "1A": {
+     "30M": 2942,
+     "40M": 5187,
+     "30F": 3600,
+     "40F": 3994
+    },
+    "2A": {
+     "30M": 4520,
+     "40M": 7693,
+     "30F": 5169,
+     "40F": 5510
+    },
+    "3A": {
+     "30M": 5900,
+     "40M": 9820,
+     "30F": 6476,
+     "40F": 6753
+    },
+    "4A": {
+     "30M": 7168,
+     "40M": 11722,
+     "30F": 7635,
+     "40F": 7839
+    },
+    "1B": {
+     "30M": 2585,
+     "40M": 4464,
+     "30F": 3066,
+     "40F": 3425
+    },
+    "2B": {
+     "30M": 3965,
+     "40M": 6591,
+     "30F": 4373,
+     "40F": 4667
+    },
+    "3B": {
+     "30M": 5233,
+     "40M": 8493,
+     "30F": 5532,
+     "40F": 5753
+    },
+    "1C": {
+     "30M": 2457,
+     "40M": 4144,
+     "30F": 2854,
+     "40F": 3189
+    },
+    "2C": {
+     "30M": 3725,
+     "40M": 6046,
+     "30F": 4013,
+     "40F": 4275
+    }
+   },
+   "main_rule": "附約，不可單獨投保；跨公司自負額實支合計至多2張；已有 XHP/XHO/XHR/XHX 者不得再投保（DM 投保須知）；主約最低保額 未確認",
+   "excl": "標準除外（條款 p.5）",
+   "features": "限額為最高給付；加護病房加倍；住院照護日額；門診每年10次且含特定診療",
+   "src": [
+    [
+     "pdfs/全球/XHO_條款.pdf",
+     "p.3–4 給付與附表；p.5 除外；p.9–10 手術表"
+    ],
+    [
+     "pdfs/全球/XHO_DM.pdf",
+     "p.2 最大值說明；p.3 保障表；p.5 費率；p.6 注意事項"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=264311RZ1AXHO21A11Z10000000"
+    ]
+   ],
+   "url": "https://www.transglobe.com.tw",
+   "tii": "保發中心 未停售；銷售日 113/09/30；productId 264311RZ1AXHO21A11Z10000000"
+  },
+  {
+   "id": "XHP",
+   "company": "全球人壽",
+   "code": "XHP",
+   "name": "全球人壽全心全意2自負額醫療費用健康保險附約（XHP）",
+   "kind": "附約",
+   "status": "現售",
+   "approval": "115.3.30 全球壽(商研)字第1150330005號",
+   "ages": "0–70歲",
+   "renew": "保證續保至81歲保單週年日",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 70% 計",
+   "op_rule": "同 XHO（每年10次）",
+   "hosp_scope": "同 XHO；自負額 5萬",
+   "annual_cap": "未見年度總限額",
+   "daily": "住院照護保險金 1,000/日（定額）",
+   "offset": "有：條款明文扣除最大值",
+   "offset_level": "明文",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "1X",
+     "room_ded": 1000,
+     "room_lim": 1000,
+     "hosp_ded": 50000,
+     "hosp_lim": 100000,
+     "op_ded": 10000,
+     "op_lim": 15000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 150000
+    },
+    {
+     "plan": "2X",
+     "room_ded": 1000,
+     "room_lim": 2000,
+     "hosp_ded": 50000,
+     "hosp_lim": 200000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 250000
+    },
+    {
+     "plan": "3X",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 50000,
+     "hosp_lim": 300000,
+     "op_ded": 10000,
+     "op_lim": 25000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 300000,
+     "bridge": 350000
+    },
+    {
+     "plan": "4X",
+     "room_ded": 1000,
+     "room_lim": 4000,
+     "hosp_ded": 50000,
+     "hosp_lim": 400000,
+     "op_ded": 10000,
+     "op_lim": 30000,
+     "limit_mode": "net",
+     "extra": "",
+     "net_hosp": 400000,
+     "bridge": 450000
+    }
+   ],
+   "rep": "2X",
+   "prem": {
+    "30M": 4961,
+    "40M": 8561,
+    "30F": 5602,
+    "40F": 6229
+   },
+   "prem_src": "XHO/XHP 友善DM p.5 費率表",
+   "all_prem": {
+    "1X": {
+     "30M": 3298,
+     "40M": 5838,
+     "30F": 4044,
+     "40F": 4648
+    },
+    "2X": {
+     "30M": 4961,
+     "40M": 8561,
+     "30F": 5602,
+     "40F": 6229
+    },
+    "3X": {
+     "30M": 6315,
+     "40M": 10745,
+     "30F": 6820,
+     "40F": 7443
+    },
+    "4X": {
+     "30M": 7497,
+     "40M": 12623,
+     "30F": 7858,
+     "40F": 8462
+    }
+   },
+   "main_rule": "同 XHO：跨公司自負額實支至多2張、已有 XHP/XHO/XHR/XHX 不得再投（DM）；主約最低保額 未確認",
+   "excl": "標準除外（條款 p.5）",
+   "features": "自負額僅5萬，限額為最高給付",
+   "src": [
+    [
+     "pdfs/全球/XHP_條款.pdf",
+     "p.3–5 給付/最大值/附表；p.10–11 手術表"
+    ],
+    [
+     "pdfs/全球/XHP_DM.pdf",
+     "p.3 保障表；p.5 費率；p.6 注意事項"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=264311RZ1AXHP21A11Z10000000"
+    ]
+   ],
+   "url": "https://www.transglobe.com.tw",
+   "tii": "保發中心 未停售；銷售日 115/03/30；productId 264311RZ1AXHP21A11Z10000000"
+  },
+  {
+   "id": "AAHSR",
+   "company": "凱基人壽",
+   "code": "AAHSR",
+   "name": "凱基人壽超放心自負額住院醫療健康保險附約",
+   "kind": "附約",
+   "status": "現售",
+   "approval": "114.06.25 凱壽商二字第1143000090號",
+   "ages": "本人/配偶 0–70歲（續保至80）；子女 0–23歲（續保至23）",
+   "renew": "保證續保至80歲",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 70% 計",
+   "op_rule": "門診手術每年6次，2-2-7／3-3-4-3",
+   "hosp_scope": "住院醫療費用（不含病房差額；無病房給付）",
+   "annual_cap": "計劃一 年總限額100萬；計劃二 50萬",
+   "daily": "日額 800（定額）",
+   "offset": "條款第十七條：已獲他保正本實支給付部分不給付＋自負額以下不給付；未見「最大值」字樣→可否互抵依文義推定，未確認",
+   "offset_level": "推定",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "計劃一",
+     "room_ded": null,
+     "room_lim": null,
+     "hosp_ded": 100000,
+     "hosp_lim": 300000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 300000
+    },
+    {
+     "plan": "計劃二",
+     "room_ded": null,
+     "room_lim": null,
+     "hosp_ded": 200000,
+     "hosp_lim": 300000,
+     "op_ded": 30000,
+     "op_lim": 40000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 300000
+    }
+   ],
+   "rep": "計劃一",
+   "prem": {
+    "30M": 3095,
+    "40M": 4935,
+    "30F": 5010,
+    "40F": 5995
+   },
+   "prem_src": "AAHSR_DM.pdf 費率表（30=30–34、40=40–44）",
+   "all_prem": {
+    "計劃一": {
+     "30M": 3095,
+     "40M": 4935,
+     "30F": 5010,
+     "40F": 5995
+    },
+    "計劃二": {
+     "30M": 1655,
+     "40M": 2485,
+     "30F": 2575,
+     "40F": 2795
+    }
+   },
+   "main_rule": "附約，不可單獨投保；投保對象本人、配偶、子女；其他依凱基核保規定（DM 投保規則）；主約最低保額 未確認",
+   "excl": "標準除外（條款 p.5）",
+   "features": "無病房給付但有800日額；年總限額100萬（計劃一）",
+   "src": [
+    [
+     "pdfs/凱基/AAHSR_條款.pdf",
+     "p.4–5 給付與第十七條；p.8 附表"
+    ],
+    [
+     "pdfs/凱基/AAHSR_DM.pdf",
+     "p.1–2 保障/費率"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=205311RZ1A02421A11Z10000000"
+    ]
+   ],
+   "url": "https://www.kgilife.com.tw",
+   "tii": "保發中心 未停售；銷售日 114/06/25；productId 205311RZ1A02421A11Z10000000"
+  },
+  {
+   "id": "A2A3",
+   "company": "新光人壽",
+   "code": "A2A3",
+   "name": "新光人壽增呵護自負額住院醫療健康保險附約",
+   "kind": "附約",
+   "status": "現售",
+   "approval": "114.06.11 新壽商開字第1140000124號",
+   "ages": "0–65歲（限主契約被保險人本人）",
+   "renew": "保證續保至80歲",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 65% 計（條款 p.4 文字；未確認是否全部項目）",
+   "op_rule": "門診手術 自1萬/限2萬，僅限健保 2-2-7",
+   "hosp_scope": "雜費及手術（合併）",
+   "annual_cap": "未見年度總限額",
+   "daily": "無日額",
+   "offset": "有：條款明文扣除最大值",
+   "offset_level": "明文",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "HSD5-20",
+     "room_ded": 500,
+     "room_lim": 2000,
+     "hosp_ded": 50000,
+     "hosp_lim": 200000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "gross",
+     "extra": "特定醫材補助 5,000",
+     "net_hosp": 150000,
+     "bridge": 200000
+    },
+    {
+     "plan": "HSD10-20",
+     "room_ded": 1000,
+     "room_lim": 2000,
+     "hosp_ded": 100000,
+     "hosp_lim": 200000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "gross",
+     "extra": "特定醫材補助 5,000",
+     "net_hosp": 100000,
+     "bridge": 200000
+    },
+    {
+     "plan": "HSD15-20",
+     "room_ded": 1500,
+     "room_lim": 2000,
+     "hosp_ded": 150000,
+     "hosp_lim": 200000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "gross",
+     "extra": "特定醫材補助 5,000",
+     "net_hosp": 50000,
+     "bridge": 200000
+    },
+    {
+     "plan": "HSD5-30",
+     "room_ded": 500,
+     "room_lim": 3000,
+     "hosp_ded": 50000,
+     "hosp_lim": 300000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "gross",
+     "extra": "特定醫材補助 5,000",
+     "net_hosp": 250000,
+     "bridge": 300000
+    },
+    {
+     "plan": "HSD10-30",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 100000,
+     "hosp_lim": 300000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "gross",
+     "extra": "特定醫材補助 5,000",
+     "net_hosp": 200000,
+     "bridge": 300000
+    },
+    {
+     "plan": "HSD15-30",
+     "room_ded": 1500,
+     "room_lim": 3000,
+     "hosp_ded": 150000,
+     "hosp_lim": 300000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "gross",
+     "extra": "特定醫材補助 5,000",
+     "net_hosp": 150000,
+     "bridge": 300000
+    },
+    {
+     "plan": "HSD20-30",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 200000,
+     "hosp_lim": 300000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "gross",
+     "extra": "特定醫材補助 5,000",
+     "net_hosp": 100000,
+     "bridge": 300000
+    },
+    {
+     "plan": "HSD25-30",
+     "room_ded": 2500,
+     "room_lim": 3000,
+     "hosp_ded": 250000,
+     "hosp_lim": 300000,
+     "op_ded": 10000,
+     "op_lim": 20000,
+     "limit_mode": "gross",
+     "extra": "特定醫材補助 5,000",
+     "net_hosp": 50000,
+     "bridge": 300000
+    }
+   ],
+   "rep": "HSD10-30",
+   "prem": {},
+   "prem_src": "官方費率表未取得（skl.com.tw／salesnet 自本機TLS中斷，使用者Mac暫時離線）→保費 未確認",
+   "all_prem": {},
+   "main_rule": "附約；保險對象限主契約被保險人本人；繳費方式需與主契約相同，主約繳費期滿後須年繳（DM p.3 投保規則）；主約最低保額 未確認",
+   "excl": "標準除外（條款 p.5）",
+   "features": "方案多（自負額5–25萬）；特定醫材補助5,000",
+   "src": [
+    [
+     "pdfs/新光/A2A3_條款.pdf",
+     "p.4–5 最大值條文；p.8 附表"
+    ],
+    [
+     "pdfs/新光/A2A3_DM.pdf",
+     "p.1–3"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=208311RZ1A00821A11Z10000000"
+    ]
+   ],
+   "url": "https://www.skl.com.tw",
+   "tii": "保發中心 未停售；銷售日 114/06/11；productId 208311RZ1A00821A11Z10000000"
+  },
+  {
+   "id": "1HSD",
+   "company": "南山人壽",
+   "code": "1HSD",
+   "name": "南山人壽超實踐幸福自負額住院醫療健康保險附約",
+   "kind": "附約",
+   "status": "現售（南山「商品名稱與核准、核備或備查日期及文號」資訊公開文件 資料日期2026/09/22 列有本附約，113.09.14修正版；i835所列2024-09-13停售應為修正前版本）",
+   "approval": "110.9.12 南壽研字第1100000151號備查；113.9.14 修正",
+   "ages": "0–65歲",
+   "renew": "保證續保至75歲",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 70% 計",
+   "op_rule": "門診手術每年6次；附表五手術項目＋健保2-2-7／3-3-4-3",
+   "hosp_scope": "醫院各項雜費及手術費（合併）",
+   "annual_cap": "未見年度總限額",
+   "daily": "無日額（特定手術關懷 5,000 定額）",
+   "offset": "條款：已獲他保正本實支給付部分不給付＋扣自負額；未見「最大值」字樣。DM2 p.6 範例（1HS-C 先賠10萬，1HSD-E 自負額10萬再賠5.4萬）顯示他保給付可抵自負額",
+   "offset_level": "DM範例",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "A",
+     "room_ded": 500,
+     "room_lim": 3000,
+     "hosp_ded": 25000,
+     "hosp_lim": 200000,
+     "op_ded": 25000,
+     "op_lim": 40000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 175000,
+     "bridge": 200000
+    },
+    {
+     "plan": "B",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 50000,
+     "hosp_lim": 200000,
+     "op_ded": 50000,
+     "op_lim": 65000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 150000,
+     "bridge": 200000
+    },
+    {
+     "plan": "C",
+     "room_ded": 1500,
+     "room_lim": 3000,
+     "hosp_ded": 75000,
+     "hosp_lim": 200000,
+     "op_ded": 75000,
+     "op_lim": 90000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 125000,
+     "bridge": 200000
+    },
+    {
+     "plan": "D",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 100000,
+     "hosp_lim": 200000,
+     "op_ded": 100000,
+     "op_lim": 115000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 200000
+    },
+    {
+     "plan": "E",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 100000,
+     "hosp_lim": 200000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 200000
+    },
+    {
+     "plan": "F",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 150000,
+     "hosp_lim": 200000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 50000,
+     "bridge": 200000
+    }
+   ],
+   "rep": "E",
+   "prem": {
+    "30M": 641,
+    "40M": 1099,
+    "30F": 1100,
+    "40F": 1787
+   },
+   "prem_src": "1HSD_條款.pdf p.36（＝DM2 p.12）初次投保件費率；30=26–30歲、40=36–40歲",
+   "all_prem": {
+    "A": {
+     "30M": 1691,
+     "40M": 2638,
+     "30F": 3004,
+     "40F": 4623
+    },
+    "B": {
+     "30M": 1038,
+     "40M": 1720,
+     "30F": 1821,
+     "40F": 2918
+    },
+    "C": {
+     "30M": 653,
+     "40M": 1145,
+     "30F": 1138,
+     "40F": 1919
+    },
+    "D": {
+     "30M": 412,
+     "40M": 768,
+     "30F": 716,
+     "40F": 1272
+    },
+    "E": {
+     "30M": 641,
+     "40M": 1099,
+     "30F": 1100,
+     "40F": 1787
+    },
+    "F": {
+     "30M": 265,
+     "40M": 431,
+     "30F": 449,
+     "40F": 773
+    }
+   },
+   "main_rule": "附約，不可單獨投保；DM2 範例搭配 1HS；主約種類/最低保額 未確認（DM 未列投保規則細節）",
+   "excl": "條款 p.7–8",
+   "features": "保費低；健康促進回饋金、防疫保健回饋金",
+   "src": [
+    [
+     "pdfs/南山/1HSD_條款.pdf",
+     "p.5–6 給付；p.7–8 除外；p.12–13 附表三/四；p.36 費率"
+    ],
+    [
+     "pdfs/南山/1HSD_DM2.pdf",
+     "p.6 範例；p.12 費率"
+    ],
+    [
+     "evidence/nanshan_File844.pdf",
+     "南山資訊公開說明文件 p.2（https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/844）"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=206311RZ1A30421A11E10000002"
+    ]
+   ],
+   "url": "https://www.nanshanlife.com.tw",
+   "tii": "保發中心 未停售；銷售日 113/09/14（第2次部分變更）；productId 206311RZ1A30421A11E10000002"
+  },
+  {
+   "id": "DBHSR",
+   "company": "三商美邦人壽",
+   "code": "DBHSR",
+   "name": "三商美邦人壽增保健康自負額住院醫療健康保險附約",
+   "kind": "附約",
+   "status": "現售（列於官網健康險頁）",
+   "approval": "未確認",
+   "ages": "自本人/配偶 0–65歲（續保至80）；子女 0–12歲（續保至22）",
+   "renew": "保證續保至80歲",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 66% 計",
+   "op_rule": "門診手術每年6次（2-2-7／3-3-4-3）",
+   "hosp_scope": "住院醫療及手術（合併）",
+   "annual_cap": "未見年度總限額",
+   "daily": "無日額",
+   "offset": "條款：已獲他保正本實支給付部分不給付＋扣自負額；未見「最大值」字樣。DM 範例顯示搭配 BHSR 先賠後可抵自負額",
+   "offset_level": "DM範例",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "A",
+     "room_ded": 500,
+     "room_lim": 3000,
+     "hosp_ded": 50000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 50000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 250000
+    },
+    {
+     "plan": "B",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 100000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 50000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 150000,
+     "bridge": 250000
+    },
+    {
+     "plan": "C",
+     "room_ded": 1500,
+     "room_lim": 3000,
+     "hosp_ded": 150000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 50000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 250000
+    },
+    {
+     "plan": "D",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 200000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 50000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 50000,
+     "bridge": 250000
+    },
+    {
+     "plan": "E",
+     "room_ded": 3000,
+     "room_lim": 4000,
+     "hosp_ded": 200000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 50000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 50000,
+     "bridge": 250000
+    }
+   ],
+   "rep": "B",
+   "prem": {
+    "30M": 1699,
+    "40M": 2506,
+    "30F": 2522,
+    "40F": 3454
+   },
+   "prem_src": "DBHSR_DM.pdf／條款 費率表（30=26–30、40=36–40）",
+   "all_prem": {
+    "A": {
+     "30M": 3089,
+     "40M": 4647,
+     "30F": 4889,
+     "40F": 6821
+    },
+    "B": {
+     "30M": 1699,
+     "40M": 2506,
+     "30F": 2522,
+     "40F": 3454
+    },
+    "C": {
+     "30M": 934,
+     "40M": 1350,
+     "30F": 1367,
+     "40F": 1929
+    },
+    "D": {
+     "30M": 474,
+     "40M": 727,
+     "30F": 725,
+     "40F": 1091
+    },
+    "E": {
+     "30M": 371,
+     "40M": 605,
+     "30F": 497,
+     "40F": 832
+    }
+   },
+   "main_rule": "附約，不可單獨投保；DM 範例搭配 BHSR；主約限制 未確認",
+   "excl": "條款 p.4",
+   "features": "方案細，低自負額選項多",
+   "src": [
+    [
+     "pdfs/三商美邦/DBHSR_條款.pdf",
+     "p.7 附表；p.4 除外"
+    ],
+    [
+     "pdfs/三商美邦/DBHSR_DM.pdf",
+     "保障/範例/費率"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=211311RZ1A04721A11Z10000002"
+    ]
+   ],
+   "url": "https://www.mli.com.tw",
+   "tii": "保發中心 未停售；銷售日 113/08/23（第2次部分變更）；productId 211311RZ1A04721A11Z10000002"
+  },
+  {
+   "id": "DZHSR",
+   "company": "三商美邦人壽",
+   "code": "DZHSR",
+   "name": "三商美邦人壽增正健康自負額住院醫療健康保險附約",
+   "kind": "附約",
+   "status": "現售（列於官網健康險頁）",
+   "approval": "未確認",
+   "ages": "本人/配偶 0–65歲（續保至75）；子女 0–12歲（續保至22）",
+   "renew": "保證續保至75歲",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 66% 計",
+   "op_rule": "門診手術每年6次（2-2-7／3-3-4-3）",
+   "hosp_scope": "住院醫療及手術（合併）",
+   "annual_cap": "未見年度總限額",
+   "daily": "無日額",
+   "offset": "條款：已獲他保正本實支給付部分不給付＋扣自負額；未見「最大值」字樣。DM 範例顯示搭配 ZHSR 先賠後可抵自負額",
+   "offset_level": "DM範例",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "A",
+     "room_ded": 500,
+     "room_lim": 3000,
+     "hosp_ded": 50000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 250000
+    },
+    {
+     "plan": "B",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 100000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 150000,
+     "bridge": 250000
+    },
+    {
+     "plan": "C",
+     "room_ded": 1500,
+     "room_lim": 3000,
+     "hosp_ded": 150000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 100000,
+     "bridge": 250000
+    },
+    {
+     "plan": "D",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 200000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 50000,
+     "bridge": 250000
+    },
+    {
+     "plan": "E",
+     "room_ded": 3000,
+     "room_lim": 4000,
+     "hosp_ded": 200000,
+     "hosp_lim": 250000,
+     "op_ded": 15000,
+     "op_lim": 30000,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 50000,
+     "bridge": 250000
+    }
+   ],
+   "rep": "B",
+   "prem": {
+    "30M": 815,
+    "40M": 1187,
+    "30F": 777,
+    "40F": 1539
+   },
+   "prem_src": "DZHSR_DM.pdf／條款 費率表（30=0–30、40=36–40）",
+   "all_prem": {
+    "A": {
+     "30M": 1526,
+     "40M": 2190,
+     "30F": 1377,
+     "40F": 2876
+    },
+    "B": {
+     "30M": 815,
+     "40M": 1187,
+     "30F": 777,
+     "40F": 1539
+    },
+    "C": {
+     "30M": 425,
+     "40M": 623,
+     "30F": 412,
+     "40F": 839
+    },
+    "D": {
+     "30M": 196,
+     "40M": 296,
+     "30F": 187,
+     "40F": 401
+    },
+    "E": {
+     "30M": 89,
+     "40M": 200,
+     "30F": 77,
+     "40F": 227
+    }
+   },
+   "main_rule": "附約，不可單獨投保；DM 範例搭配 ZHSR；主約限制 未確認",
+   "excl": "條款 p.4",
+   "features": "方案細，低自負額選項多",
+   "src": [
+    [
+     "pdfs/三商美邦/DZHSR_條款.pdf",
+     "p.8 附表；p.4 除外"
+    ],
+    [
+     "pdfs/三商美邦/DZHSR_DM.pdf",
+     "保障/範例/費率"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=211311RZ1A03721A11Z10000004"
+    ]
+   ],
+   "url": "https://www.mli.com.tw",
+   "tii": "保發中心 未停售；銷售日 113/08/23（第4次部分變更）；productId 211311RZ1A03721A11Z10000004"
+  },
+  {
+   "id": "DHSR",
+   "company": "三商美邦人壽",
+   "code": "DHSR",
+   "name": "三商美邦人壽增新住院自負額住院醫療健康保險附約",
+   "kind": "附約",
+   "status": "現售（列於官網健康險頁）",
+   "approval": "未確認",
+   "ages": "本人/配偶 0–65歲（續保至74）；子女 0–12歲（續保至22）",
+   "renew": "保證續保至74歲",
+   "waiting": "30日",
+   "nonNHI": "未確認",
+   "op_rule": "門診手術每年6次（2-2-7／3-3-4-3）",
+   "hosp_scope": "手術、住院醫療分項計算（各自自負額/限額）",
+   "annual_cap": "未見年度總限額",
+   "daily": "無日額",
+   "offset": "條款：已獲他保正本實支給付部分不給付＋扣自負額；未見「最大值」字樣。DM 範例顯示搭配 HSRS（87年舊商品） 先賠後可抵自負額",
+   "offset_level": "DM範例",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "A",
+     "room_ded": 500,
+     "room_lim": 3000,
+     "hosp_ded": 15000,
+     "hosp_lim": 150000,
+     "op_ded": 22500,
+     "op_lim": 37500,
+     "limit_mode": "gross",
+     "extra": "另：每次住院手術 自22,500/限100,000",
+     "net_hosp": 135000,
+     "bridge": 150000
+    },
+    {
+     "plan": "B",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 30000,
+     "hosp_lim": 150000,
+     "op_ded": 45000,
+     "op_lim": 60000,
+     "limit_mode": "gross",
+     "extra": "另：每次住院手術 自45,000/限100,000",
+     "net_hosp": 120000,
+     "bridge": 150000
+    },
+    {
+     "plan": "C",
+     "room_ded": 1500,
+     "room_lim": 3000,
+     "hosp_ded": 45000,
+     "hosp_lim": 150000,
+     "op_ded": 67500,
+     "op_lim": 82500,
+     "limit_mode": "gross",
+     "extra": "另：每次住院手術 自67,500/限100,000",
+     "net_hosp": 105000,
+     "bridge": 150000
+    },
+    {
+     "plan": "D",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 60000,
+     "hosp_lim": 150000,
+     "op_ded": 90000,
+     "op_lim": 105000,
+     "limit_mode": "gross",
+     "extra": "另：每次住院手術 自90,000/限100,000",
+     "net_hosp": 90000,
+     "bridge": 150000
+    },
+    {
+     "plan": "E",
+     "room_ded": 3000,
+     "room_lim": 4000,
+     "hosp_ded": 90000,
+     "hosp_lim": 150000,
+     "op_ded": 112500,
+     "op_lim": 127500,
+     "limit_mode": "gross",
+     "extra": "另：每次住院手術 自112,500/限150,000",
+     "net_hosp": 60000,
+     "bridge": 150000
+    },
+    {
+     "plan": "F",
+     "room_ded": 4000,
+     "room_lim": 5000,
+     "hosp_ded": 120000,
+     "hosp_lim": 150000,
+     "op_ded": 135000,
+     "op_lim": 150000,
+     "limit_mode": "gross",
+     "extra": "另：每次住院手術 自135,000/限150,000",
+     "net_hosp": 30000,
+     "bridge": 150000
+    }
+   ],
+   "rep": "B",
+   "prem": {
+    "30M": 1393,
+    "40M": 2341,
+    "30F": 2252,
+    "40F": 2776
+   },
+   "prem_src": "DHSR_DM.pdf／條款 費率表（30=28–37、40=38–47）",
+   "all_prem": {
+    "A": {
+     "30M": 2056,
+     "40M": 3376,
+     "30F": 4063,
+     "40F": 4377
+    },
+    "B": {
+     "30M": 1393,
+     "40M": 2341,
+     "30F": 2252,
+     "40F": 2776
+    },
+    "C": {
+     "30M": 913,
+     "40M": 1584,
+     "30F": 1270,
+     "40F": 1767
+    },
+    "D": {
+     "30M": 589,
+     "40M": 1051,
+     "30F": 713,
+     "40F": 1129
+    },
+    "E": {
+     "30M": 285,
+     "40M": 532,
+     "30F": 295,
+     "40F": 552
+    },
+    "F": {
+     "30M": 111,
+     "40M": 212,
+     "30F": 114,
+     "40F": 223
+    }
+   },
+   "main_rule": "附約，不可單獨投保；DM 範例搭配 HSRS（87年舊商品）；主約限制 未確認",
+   "excl": "條款 p.4",
+   "features": "手術與醫療分項自負額",
+   "src": [
+    [
+     "pdfs/三商美邦/DHSR_條款.pdf",
+     "p.8 附表/費率；p.4 除外"
+    ],
+    [
+     "pdfs/三商美邦/DHSR_DM.pdf",
+     "保障/範例/費率"
+    ],
+    [
+     "pdfs/三商美邦/DHSR_DM.pdf",
+     "投保規則（DM p.2）"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=211311RZ1A03621A11Z10000004"
+    ]
+   ],
+   "url": "https://www.mli.com.tw",
+   "tii": "保發中心 未停售；銷售日 113/08/23（第4次部分變更）；productId 211311RZ1A03621A11Z10000004"
+  },
+  {
+   "id": "XHQN",
+   "company": "全球人壽",
+   "code": "XHQN",
+   "name": "全球人壽新醫療費用健康保險自負額附加條款（XHQN）",
+   "kind": "附加條款",
+   "status": "現售（保發中心衍生資料 safecheck 標現售；依條款第一條僅能附加於全球「指定商品」附約→新保戶能否投保 未確認）",
+   "approval": "113.7.12 銷售",
+   "ages": "未確認",
+   "renew": "隨所附附約",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 70% 計",
+   "op_rule": "未確認",
+   "hosp_scope": "手術超額、住院醫療超額分項；加護病房×3",
+   "annual_cap": "未確認",
+   "daily": "無",
+   "offset": "條款：已獲他保正本實支給付者不給付；未見最大值字樣→未確認",
+   "offset_level": "推定",
+   "claim": "正本理賠",
+   "plans": [
+    {
+     "plan": "2C（範例）",
+     "room_ded": 1000,
+     "room_lim": 2000,
+     "hosp_ded": 50000,
+     "hosp_lim": 250000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "手術超額 自35,000/限105,000；方案 1A–6E 詳附表",
+     "net_hosp": 200000,
+     "bridge": 250000
+    }
+   ],
+   "rep": "2C（範例）",
+   "prem": {},
+   "prem_src": "未取得費率→未確認",
+   "all_prem": {},
+   "main_rule": "僅能附加於全球人壽住院醫療保險附約、住院醫療保險附約(96)、醫療費用健康保險附約（皆已停售）",
+   "excl": "未確認",
+   "features": "既有舊實支保戶升級用",
+   "src": [
+    [
+     "pdfs/全球/XHQN_條款.pdf",
+     "p.1–3 附加對象與給付；p.7 附表"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=264311AZ1AXHQ21A11Z10000002"
+    ]
+   ],
+   "url": "https://www.transglobe.com.tw",
+   "tii": "保發中心 未停售；銷售日 113/07/12（第二次部分變更）；productId 264311AZ1AXHQ21A11Z10000002"
+  },
+  {
+   "id": "HD",
+   "company": "新光人壽",
+   "code": "HD（HDAAAN/HDBBBN）",
+   "name": "新光人壽臻保順心住院醫療費用健康保險附約-自負額型（原台新人壽商品，115年起併入新光）",
+   "kind": "附約",
+   "status": "現售（保發中心：第1次部分變更 銷售日115/01/01、未停售；i835 載2026-01-01起新光銷售；新光官網未能連線核對→細節未確認）",
+   "approval": "113.01.29 台新人壽字第1130000032號函備查；114.11.25 金管保壽字第1140494682號函核准（依保發中心衍生資料）",
+   "ages": "0–70歲",
+   "renew": "保證續保至84歲",
+   "waiting": "30日",
+   "nonNHI": "非健保給付者按 65% 計（台新2024版DM）",
+   "op_rule": "無門診手術給付項目（台新2024版DM僅列病房、住院雜費與手術）",
+   "hosp_scope": "住院雜費與手術費用（合併）",
+   "annual_cap": "未見",
+   "daily": "無",
+   "offset": "台新2024版條款/DM 僅扣自負額，未見「他保正本給付」最大值字樣；2026新光版 未確認",
+   "offset_level": "未確認",
+   "claim": "未確認（2024年1月版早於正本理賠新制）",
+   "plans": [
+    {
+     "plan": "型別A 計劃5",
+     "room_ded": 500,
+     "room_lim": 3000,
+     "hosp_ded": 40000,
+     "hosp_lim": 240000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 240000
+    },
+    {
+     "plan": "型別A 計劃10",
+     "room_ded": 1000,
+     "room_lim": 3000,
+     "hosp_ded": 80000,
+     "hosp_lim": 240000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 160000,
+     "bridge": 240000
+    },
+    {
+     "plan": "型別A 計劃15",
+     "room_ded": 1500,
+     "room_lim": 3000,
+     "hosp_ded": 120000,
+     "hosp_lim": 240000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 120000,
+     "bridge": 240000
+    },
+    {
+     "plan": "型別A 計劃20",
+     "room_ded": 2000,
+     "room_lim": 3000,
+     "hosp_ded": 160000,
+     "hosp_lim": 240000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 80000,
+     "bridge": 240000
+    },
+    {
+     "plan": "型別A 計劃25",
+     "room_ded": 2500,
+     "room_lim": 3000,
+     "hosp_ded": 200000,
+     "hosp_lim": 240000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 40000,
+     "bridge": 240000
+    },
+    {
+     "plan": "型別B 計劃5",
+     "room_ded": 500,
+     "room_lim": 5000,
+     "hosp_ded": 40000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 360000,
+     "bridge": 400000
+    },
+    {
+     "plan": "型別B 計劃10",
+     "room_ded": 1000,
+     "room_lim": 5000,
+     "hosp_ded": 80000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 320000,
+     "bridge": 400000
+    },
+    {
+     "plan": "型別B 計劃15",
+     "room_ded": 1500,
+     "room_lim": 5000,
+     "hosp_ded": 120000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 280000,
+     "bridge": 400000
+    },
+    {
+     "plan": "型別B 計劃20",
+     "room_ded": 2000,
+     "room_lim": 5000,
+     "hosp_ded": 160000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 240000,
+     "bridge": 400000
+    },
+    {
+     "plan": "型別B 計劃25",
+     "room_ded": 2500,
+     "room_lim": 5000,
+     "hosp_ded": 200000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 200000,
+     "bridge": 400000
+    },
+    {
+     "plan": "型別B 計劃30",
+     "room_ded": 3000,
+     "room_lim": 5000,
+     "hosp_ded": 240000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 160000,
+     "bridge": 400000
+    },
+    {
+     "plan": "型別B 計劃35",
+     "room_ded": 3500,
+     "room_lim": 5000,
+     "hosp_ded": 280000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 120000,
+     "bridge": 400000
+    },
+    {
+     "plan": "型別B 計劃40",
+     "room_ded": 4000,
+     "room_lim": 5000,
+     "hosp_ded": 320000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 80000,
+     "bridge": 400000
+    },
+    {
+     "plan": "型別B 計劃45",
+     "room_ded": 4500,
+     "room_lim": 5000,
+     "hosp_ded": 360000,
+     "hosp_lim": 400000,
+     "op_ded": null,
+     "op_lim": null,
+     "limit_mode": "gross",
+     "extra": "",
+     "net_hosp": 40000,
+     "bridge": 400000
+    }
+   ],
+   "rep": "型別A 計劃10",
+   "prem": {},
+   "prem_src": "未取得費率→未確認",
+   "all_prem": {},
+   "main_rule": "台新2024版投保規則：計劃別須同台新 HS/HN/HX 實支附約計劃別（例 HX計劃10 僅能附加 HD 型別A/B 計劃10）；即須搭配同公司一般實支；新光2026版 未確認",
+   "excl": "標準除外（台新2024版DM）",
+   "features": "自負額與限額依原實支計劃別綁定；型別B最高40萬",
+   "src": [
+    [
+     "pdfs/新光/HD_DM_台新2024.pdf",
+     "台新2024版DM p.1–2 保障表/投保規則（來源 cdn.boostus.cc 鏡像，非官網）"
+    ],
+    [
+     "pdfs/新光/HD_條款_台新2024.pdf",
+     "台新2024版條款（鏡像）"
+    ],
+    [
+     "https://www.i835.com.tw/product/prod_info.php?no=32705",
+     "銷售日期 2026-01-01起（第三方）"
+    ],
+    [
+     "https://safecheck.tw/products/insprod-208311rz1a01521a11z10000001",
+     "保發中心衍生：現售、核准文號（第三方）"
+    ],
+    [
+     "tii_results.csv",
+     "保發中心商品查詢（關鍵字「自負額」，使用者瀏覽器查詢 2026-10-21）https://insprod.tii.org.tw/DetailList.aspx?productId=208311RZ1A01521A11Z10000001"
+    ]
+   ],
+   "url": "https://www.skl.com.tw",
+   "tii": "保發中心 未停售；銷售日 115/01/01（第1次部分變更）；productId 208311RZ1A01521A11Z10000001"
+  }
+ ],
+ "discontinued": [
+  {
+   "company": "台新人壽",
+   "name": "臻保順心-自負額型 HD 台新版（HDAAAN/HDBBBN）",
+   "note": "台新人壽銷售 2024-01-29 至 2025-12-31；併入新光後由新光續售（見現售 HD，未確認）"
+  },
+  {
+   "company": "台灣人壽",
+   "name": "祝安心自負額住院醫療健康保險附約 HNRD（NTYH1502）",
+   "note": "判定停售（僅續保）：台灣人壽 2023-12-29 公開表示自12/30起暫停受理、已投保者可續保（ETtoday finance.ettoday.net/news/2653470；中央社 cna.com.tw/news/afe/202312290079.aspx）。保發中心列「第4次部分變更」銷售日114/09/01、未停售，研判為既有保單條款修正版；官網條款下載清單（portal-api/File/1792，2026/10/12）仍列條款，但該清單同列已停售之HNRC，非現售清單。→ 新件可否投保 未確認，建議向台壽確認"
+  },
+  {
+   "company": "全球人壽",
+   "name": "XHQ 自負額附加條款",
+   "note": "2024-02-26 至 2024-07-11；官網條款顯示「暫無資料」"
+  },
+  {
+   "company": "新光人壽",
+   "name": "增安心自負額住院醫療健康保險附約 U2/U3（U2G/U2H/U2I）",
+   "note": "判定停售（未確認）：保發中心列第4次(112/02/08)、第5次(113/07/01)部分變更均未停售；但 Finfo 標停售，且新光 114/06/11 推出計劃別結構相同之 A2A3 增呵護。新光官網停售公告因本機無法連線 skl.com.tw 未能取得"
+  },
+  {
+   "company": "國泰人壽",
+   "name": "WV3 自負額實支（舊版）",
+   "note": "停售（Finfo 討論 finfo.tw/posts/13226；第三方，未經官網核對）"
+  }
+ ],
+ "no_product_found": [
+  "遠雄",
+  "台灣人壽",
+  "安聯",
+  "元大",
+  "宏泰",
+  "第一金",
+  "合庫",
+  "臺銀",
+  "友邦",
+  "保誠",
+  "中華郵政",
+  "安達國際（原康健）",
+  "法國巴黎",
+  "保德信（現為全球人壽併入，未確認）"
+ ],
+ "generated": "2026-10-21"
+}
