@@ -15,8 +15,9 @@ const IC={pre:'<path d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-5h4v5" stroke="#1f6fd1
  opd:'<path d="M12 3v18M3 12h18" stroke="#1f6fd1" stroke-width="3"/>',
  post:'<path d="M5 12h11m-4-5 5 5-5 5M19 4v16" stroke="#1f6fd1" stroke-width="2" fill="none"/>'};
 const icon=k=>`<div class="ic"><svg viewBox="0 0 24 24">${IC[k]}</svg></div>`;
-async function getDed(){if(!S.ded){const j=await (await fetch('data/deductible_products.json')).json();S.ded=j.products.filter(p=>p.id!=='XHQN'||true)}return S.ded}
-async function getReg(){if(!S.reg){try{const j=await (await fetch('data/regular.json')).json();S.reg=j.products;S.regUpd=j.updated}catch(e){S.reg=[]}}return S.reg}
+const CO_ALIAS={'臺灣':'台灣','台銀':'臺銀','三商':'三商美邦','中壽':'中國','新壽':'新光','國壽':'國泰'};const coN=c=>{c=(c||'').trim().replace(/(人壽)?(保險)?(股份)?(有限公司)?$/,'').replace(/人壽$/,'');return CO_ALIAS[c]||c||'其他'};
+async function getDed(){if(!S.ded){const j=await (await fetch('data/deductible_products.json')).json();S.ded=j.products.filter(p=>p.id!=='XHQN'||true);S.ded.forEach(p=>p.company=coN(p.company))}return S.ded}
+async function getReg(){if(!S.reg){try{const j=await (await fetch('data/regular.json')).json();S.reg=j.products;S.reg.forEach(p=>p.company=coN(p.company));S.regUpd=j.updated}catch(e){S.reg=[]}}return S.reg}
 // ---------- view models ----------
 function vmDed(p,pl){const n=pl.limit_mode==='net';const room=pl.room_lim==null?null:(n?pl.room_lim:pl.room_lim-pl.room_ded),op=pl.op_lim==null?null:(n?pl.op_lim:pl.op_lim-pl.op_ded);
  const pp=/前|後/.test(p.hosp_scope);const calc=(p.id!=='DHSR'&&p.offset_level!=='未確認'&&pl.net_hosp!=null);

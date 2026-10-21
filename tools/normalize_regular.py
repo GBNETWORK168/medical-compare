@@ -1,3 +1,4 @@
+import re
 # 將 regular/products.json 轉為網站用精簡資料（不新增任何數字；結構化數字僅取自人工整理欄位原文）
 import json,re,sys,datetime,os
 SRC=sys.argv[1];OUT=sys.argv[2]
@@ -47,7 +48,7 @@ for i,p in enumerate(P):
         prem_note=short(sp.get('note','') ,120)+(' ｜ '+short(sp.get('source',''),160) if sp.get('source') else '')
     else: prem_note=U
     manual=not str(p.get('extraction_method','')).startswith('自動')
-    out.append(dict(id='R%02d'%i,company=p['company'],name=p['name'],code=code,type=p.get('type',U),
+    out.append(dict(id='R%02d'%i,company=re.sub(r'人壽(保險)?(股份有限公司)?$','',p['company'].strip()) or p['company'],name=p['name'],code=code,type=p.get('type',U),
       guaranteed=gr(p.get('guaranteed_renewal')),renew_age=p.get('renewal_max_age_num',U),issue_age=short(p.get('issue_age'),60),
       standalone=short(p.get('standalone'),40),main_rule=short(p.get('rider_attach_rules'),160),min_main=short(p.get('min_main_policy'),80),
       room=short(p.get('room_limit')),misc=short(p.get('misc_limit')),surg=short(p.get('surgery_limit')),opd=short(p.get('opd_surgery')),
