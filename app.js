@@ -18,10 +18,21 @@ const icon=k=>`<div class="ic"><svg viewBox="0 0 24 24">${IC[k]}</svg></div>`;
 const CO_ALIAS={'臺灣':'台灣','台銀':'臺銀','三商':'三商美邦','中壽':'中國','新壽':'新光','國壽':'國泰'};const coN=c=>{c=(c||'').trim().replace(/(人壽)?(保險)?(股份)?(有限公司)?$/,'').replace(/人壽$/,'');return CO_ALIAS[c]||c||'其他'};
 async function getDed(){if(!S.ded){const j=await (await fetch('data/deductible_products.json')).json();S.ded=j.products.filter(p=>p.id!=='XHQN'||true);S.ded.forEach(p=>p.company=coN(p.company))}return S.ded}
 async function getReg(){if(!S.reg){try{const j=await (await fetch('data/regular.json')).json();S.reg=j.products;S.reg.forEach(p=>p.company=coN(p.company));S.regUpd=j.updated}catch(e){S.reg=[]}}return S.reg}
+
+// 商品代號：只顯示資料標記確認或文件明載者；不確定一律不顯示
+function codeOf(p){let c=String((p&&p.code)||'').trim();if(!c)return '';
+ const ok=/官網確認|型錄確認/.test(c);if(!ok&&/未確認|待確認|推定|[?？]/.test(c))return '';
+ c=c.replace(/（[^（）]*）|\([^()]*\)|【[^【】]*】/g,'').split(/[;；]/)[0].trim();
+ let t=c.split('/').map(x=>x.trim()).filter(Boolean);if(!t.length||!t.every(x=>/^[A-Z0-9]+(-[0-9]+)?$/.test(x)))return '';
+ t=t.map(x=>x.replace(/[0-9]+-[0-9]+$/,''));
+ if(t.length>1){const b=t.map(x=>x.replace(/[0-9]+$/,''));if(b[0]&&b.every(x=>x===b[0]))t=[b[0]]}
+ return [...new Set(t)].join('／')}
+const nameNoCo=n=>String(n||'').replace(/^.{1,6}?人壽/,'');
+function pName(p,short){const c=codeOf(p);let n=short?nameNoCo(p.name):p.name;if(c&&!n.includes('（'+c+'）')&&!n.includes('('+c+')'))n+='（'+c+'）';return n}
 // ---------- view models ----------
 function vmDed(p,pl){const n=pl.limit_mode==='net';const room=pl.room_lim==null?null:(n?pl.room_lim:pl.room_lim-pl.room_ded),op=pl.op_lim==null?null:(n?pl.op_lim:pl.op_lim-pl.op_ded);
  const pp=/前|後/.test(p.hosp_scope);const calc=(p.id!=='DHSR'&&p.offset_level!=='未確認'&&pl.net_hosp!=null);
- return {kind:'ded',p,pl,label:`${p.company} ${p.code}`,plan:pl.plan,
+ return {kind:'ded',p,pl,label:`${p.company} ${pName(p,1)}`,plan:pl.plan,
   room:{amt:room,unit:'/日',d:pl.room_ded!=null?`每日先自付 ${f(pl.room_ded)}`:''},
   misc:{amt:pl.net_hosp,d:`總費用超過 ${wan(pl.hosp_ded)} 才開始賠`},
   surg:{amt:null,txt:/手術/.test(p.hosp_scope)?'併入雜費額度':'',d:''},
@@ -30,7 +41,7 @@ function vmDed(p,pl){const n=pl.limit_mode==='net';const room=pl.room_lim==null?
   ded:pl.hosp_ded,top:pl.bridge,calc,
   pay:(c,first)=>calc?Math.min(Math.max(0,c-Math.max(pl.hosp_ded,first)),pl.net_hosp):null}}
 function ex(t){t=String(t||'');return t.length>46?t.slice(0,46)+'…':t}
-function vmReg(r,pl){const lab=`${r.company} ${r.code&&!/^未確認/.test(r.code)?r.code.replace(/[(（【].*$/,''):''}`;
+function vmReg(r,pl){const lab=`${r.company} ${pName(r,1)}`;
  if(!pl)return {kind:'reg',r,label:lab,plan:'',none:true,cap:null,pay:()=>null};
  const dk=(t)=>({txt:'依條款',d:ex(t)});
  const hy=(r.hybrid?`（${r.hybrid}）`:'')+(/^每1單位/.test(pl.plan)?'每單位，×投保單位數':'');const per=/^每1單位/.test(pl.plan);
@@ -65,7 +76,7 @@ function diagram(vms,title){const g=k=>vms.map(v=>v[k]);
  h+='<div class="mut">僅試算雜費＋手術一個總額；不含病房、日額、非健保比例。'+(reg&&reg.r&&!reg.r.combined&&reg.pl?'一般實支之手術依比率表另計，未計入。':'')+'</div></div>';
  h+=vms.map(detail).join('')+'</div>';return h}
 function detail(v){if(v.kind==='ded'){const p=v.p;return `<details><summary>${esc(v.label)} 條款重點與出處</summary><div class="kv"><b>年齡</b> ${esc(p.ages)}<br><b>續保</b> ${esc(p.renew)}<br><b>他保可抵自負額</b> ${unk(p.offset)}<br><b>非健保</b> ${unk(p.nonNHI)}<br><b>門診手術</b> ${unk(p.op_rule)}<br><b>年度上限</b> ${unk(p.annual_cap)}<br><b>主約限制</b> ${unk(p.main_rule)}<br><b>保費</b> ${premTxt(p.all_prem[v.plan])}<br><b>出處</b> ${p.src.map(s=>esc(s[0].split('/').pop()+' '+s[1])).join('；')}</div></details>`}
- if(!v.r)return '';const r=v.r;return `<details><summary>${esc(v.label)} 條款重點與出處</summary><div class="kv"><b>名稱</b> ${esc(r.name)}<br><b>投保年齡</b> ${unk(r.issue_age)}<br><b>保證續保</b> ${unk(r.guaranteed)}${r.renew_age!==U?'（至'+esc(r.renew_age)+'歲）':''}<br><b>病房</b> ${unk(r.room)}<br><b>雜費</b> ${unk(r.misc)}<br><b>手術</b> ${unk(r.surg)}<br><b>門診手術</b> ${unk(r.opd)}<br><b>年度上限</b> ${unk(r.annual)}<br><b>日額選擇</b> ${unk(r.daily)}<br><b>正本／副本</b> ${unk(r.copy)}<br><b>主約限制</b> ${unk(r.main_rule)}；${unk(r.standalone)}<br><b>保費</b> ${premReg(r,v.plan)}<br><b>資料</b> ${r.manual?'人工核對':'<span class="unk">條款自動擷取，核對中</span>'}；保發中心 ${esc(r.tii)}；${esc(r.src)}</div></details>`}
+ if(!v.r)return '';const r=v.r;return `<details><summary>${esc(v.label)} 條款重點與出處</summary><div class="kv"><b>名稱</b> ${esc(pName(r))}<br><b>投保年齡</b> ${unk(r.issue_age)}<br><b>保證續保</b> ${unk(r.guaranteed)}${r.renew_age!==U?'（至'+esc(r.renew_age)+'歲）':''}<br><b>病房</b> ${unk(r.room)}<br><b>雜費</b> ${unk(r.misc)}<br><b>手術</b> ${unk(r.surg)}<br><b>門診手術</b> ${unk(r.opd)}<br><b>年度上限</b> ${unk(r.annual)}<br><b>日額選擇</b> ${unk(r.daily)}<br><b>正本／副本</b> ${unk(r.copy)}<br><b>主約限制</b> ${unk(r.main_rule)}；${unk(r.standalone)}<br><b>保費</b> ${premReg(r,v.plan)}<br><b>資料</b> ${r.manual?'人工核對':'<span class="unk">條款自動擷取，核對中</span>'}；保發中心 ${esc(r.tii)}；${esc(r.src)}</div></details>`}
 function premTxt(o){if(!o||!Object.keys(o).length)return '<span class="unk">未確認</span>';return `30歲男 ${f(o['30M'])}／女 ${f(o['30F'])}；40歲男 ${f(o['40M'])}／女 ${f(o['40F'])}（元/年）`}
 function premReg(r,plan){const o=r.prem[plan]||r.prem._auto;return o?premTxt(o)+(r.prem._auto?' <span class="unk">（自動擷取，計劃別待核）</span>':''):'<span class="unk">未確認</span>'}
 // ---------- steps ----------
@@ -77,11 +88,11 @@ async function go(){const s2=$('#s2'),s3=$('#s3');s2.classList.remove('hide');s3
  if(S.type==='reg')return pickFlow(await getReg(),'reg');
  if(S.type==='combo'){await Promise.all([getDed(),getReg()]);return comboFlow()}
  if(S.type==='cmp'){await Promise.all([getDed(),getReg()]);return cmpFlow()}}
-const items=(list,kind)=>list.map(p=>({kind,p,id:(kind==='ded'?'D':'')+p.id,co:p.company,name:kind==='ded'?p.name:p.name,code:p.code,plans:p.plans.map(x=>x.plan),main:kind==='ded'?p.main_rule:(p.standalone+' '+p.main_rule)}));
+const items=(list,kind)=>list.map(p=>({kind,p,id:(kind==='ded'?'D':'')+p.id,co:p.company,name:pName(p),code:p.code,plans:p.plans.map(x=>x.plan),main:kind==='ded'?p.main_rule:(p.standalone+' '+p.main_rule)}));
 function coChips(its,sel,cb,id){const cos=[...new Set(its.map(i=>i.co))];return `<div class="chips" id="${id}">${cos.map(c=>`<button class="chip ${sel===c?'on':''}" data-c="${c}">${c}</button>`).join('')}</div>`}
 function bindChips(id,cb){document.querySelectorAll(`#${id} .chip`).forEach(b=>b.onclick=()=>cb(b.dataset.c))}
 function prodList(its,sel,id){const grp=i=>i.kind!=='reg'?0:i.p.copay?2:i.p.reclass?3:i.p.hybrid?1:0;const H=['','日額轉實支（混合型）','部分負擔型','分類待確認'];let last=0;
- const cd=i=>i.code&&i.code!==U&&!/^未確認/.test(i.code)?esc(i.code.replace(/[(（【].*$/,'')):'';
+ const cd=i=>'';
  return `<div class="list" id="${id}">${its.slice().sort((a,b)=>grp(a)-grp(b)).map(i=>{const g=grp(i);const hd=g!==last?(last=g,`<div class="sub" style="margin:10px 0 4px;font-weight:600">${H[g]}</div>`):'';
   const tag=i.kind==='reg'?(esc(i.p.type)+(i.p.hybrid?' ・'+esc(i.p.hybrid):'')+(i.p.copay?' ・<b style="color:#b44">部分負擔</b>':'')):'';
   return hd+`<button class="item ${sel===i.id?'on':''}" data-i="${i.id}">${esc(i.name)}<div class="c">${cd(i)} ${tag}</div></button>`}).join('')}</div>`}
@@ -118,7 +129,7 @@ function cmpFlow(){const A=[...items(S.ded,'ded'),...items(S.reg,'reg')];const s
  if(S.cmp.length<2){$('#out').innerHTML='';return}
  const ps=S.cmp.map(id=>A.find(i=>i.id===id));const row=(k,fn)=>`<tr><td>${k}</td>${ps.map(i=>`<td>${fn(i)}</td>`).join('')}</tr>`;
  const D=(i,fd,fr)=>i.kind==='ded'?fd(i.p,i.p.plans.find(x=>x.plan===i.p.rep)):fr(i.p,i.p.plans[0]);
- $('#out').innerHTML=`<div class="map"><h3>並排比較</h3><div class="who">自負額商品以代表方案、一般實支以計劃1（有結構化者）呈現</div><div class="tw"><table><tr><td></td>${ps.map(i=>`<th>${esc(i.co)}<br>${esc(i.code!==U?i.code:i.name.slice(0,14))}</th>`).join('')}</tr>
+ $('#out').innerHTML=`<div class="map"><h3>並排比較</h3><div class="who">自負額商品以代表方案、一般實支以計劃1（有結構化者）呈現</div><div class="tw"><table><tr><td></td>${ps.map(i=>`<th>${esc(i.co)}<br>${esc(pName(i.p,1))}</th>`).join('')}</tr>
  ${row('類型',i=>i.kind==='ded'?'自負額':'一般')}
  ${row('病房/日',i=>D(i,(p,pl)=>f(pl.room_lim)+(pl.room_ded?'（自付'+f(pl.room_ded)+'）':''),(r,pl)=>pl?f(pl.room):unk(r.room)))}
  ${row('雜費＋手術',i=>D(i,(p,pl)=>'最高 '+wan(pl.net_hosp)+'（超過'+wan(pl.hosp_ded)+'起賠）',(r,pl)=>pl?wan(pl.misc)+(r.combined?'（含手術）':'＋手術依比率'):unk(r.misc)))}
@@ -129,7 +140,7 @@ function cmpFlow(){const A=[...items(S.ded,'ded'),...items(S.reg,'reg')];const s
  ${row('30歲男保費',i=>i.kind==='ded'?f((i.p.all_prem[i.p.rep]||{})['30M']):unk(((i.p.prem['計劃1']||i.p.prem._auto)||{})['30M']||U))}
  </table></div></div>`}
 function fubon(){const hsy=S.ded.find(p=>p.id==='HSY');const hsv=S.reg.find(r=>r.code==='HSV1/HSV2/HSV3');
- return `<div class="map"><h3>富邦 佳實在 HSV（一般實支）</h3><div class="who">依 HSV 條款（113.07.15版）人工核對；同業 73 張已人工覆核條款（regular/summary.md v2）</div>
+ return `<div class="map"><h3>富邦 佳實在（HSV）一般實支</h3><div class="who">依 HSV 條款（113.07.15版）人工核對；同業 73 張已人工覆核條款（regular/summary.md v2）</div>
  <div class="lb">資料支持的優勢</div><ol class="adv">
  <li><b>保證續保</b>（第17條）。條款明載「非保證續保」的同業有 <b>9 張</b>：國泰新iHealth、凱基一生康泰、台灣人壽龍實在、元大元心實足、宏泰泰實在、宏泰實分醫靠、全球實足滿意、合庫網路投保、新光 New Health。</li>
  <li>續保至 <b>80歲</b>，高於上限 75歲以下者：南山 1HS、台灣人壽保實在、台灣人壽溫心、保誠兩張、遠雄永安康／永康富／安心康富（75）、台灣人壽新住院醫療健康保險附約（65）。</li>
@@ -149,7 +160,7 @@ function fubon(){const hsy=S.ded.find(p=>p.id==='HSY');const hsv=S.reg.find(r=>r
  <tr><td>凱基 心康泰 1單位</td><td>3,390</td><td>6,180</td><td>5,500</td><td>6,950</td></tr>
  <tr><td>台灣人壽 保實在 計劃一*</td><td>4,099</td><td>5,076</td><td>6,785</td><td>6,320</td></tr></table></div>
  <div class="mut">*非完全同級（醫吉讚醫療15萬；保實在為日額1,000＋醫療5萬）。各家結構不同，僅作同級參考。來源：南山型錄 File/2470、宏泰條款附表二費率表、TII 費率表＋富邦四季春快速報價、凱基 DM PLDL1140119、台灣人壽 DM（regular/summary.md v2）。</div></div>
- <div class="map"><h3>富邦 全鑫 HSY（自負額實支）</h3><div class="lb">資料支持的優勢</div><ol class="adv"><li>非健保費用按 <b>75%</b> 給付，同業自負額商品為65–70%。</li><li>設有特定處置保險金（全球XHO/XHP另有門診特定診療）。</li><li>投保年齡至70歲，高於南山、三商、新光A2A3（65歲）。</li><li>有每日病房費用；凱基AAHSR無病房給付。</li></ol>
+ <div class="map"><h3>富邦 全鑫（HSY）自負額實支</h3><div class="lb">資料支持的優勢</div><ol class="adv"><li>非健保費用按 <b>75%</b> 給付，同業自負額商品為65–70%。</li><li>設有特定處置保險金（全球XHO/XHP另有門診特定診療）。</li><li>投保年齡至70歲，高於南山、三商、新光A2A3（65歲）。</li><li>有每日病房費用；凱基AAHSR無病房給付。</li></ol>
  <div class="lb">弱點</div><ul class="adv"><li>每年總限額 75萬／50萬；多數同業條款未見年度總限額。</li><li>最高給付20萬，與國泰WV4、全球XHO 2A、凱基AAHSR同級，非較高。</li><li>保費非最低（30歲男計劃1 3,694元）。</li><li>續保至80歲；全球XHO/XHP至81歲。</li></ul>
  <div class="mut">出處：${hsy.src.map(s=>esc(s[0].split('/').pop()+' '+s[1])).join('；')}；HSV 條款 regular/pdfs/富邦/HSV_條款.pdf；富邦四季春快速報價 費率資料</div></div>`}
 (async()=>{render1();try{const u=await (await fetch('data/updated.txt')).text();$('#upd').textContent='資料更新日期：'+u.trim();$('#upd2').textContent='資料更新日期：'+u.trim()}catch(e){$('#upd').textContent=''}
